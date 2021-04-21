@@ -35,7 +35,6 @@ public class CartManagerTestNonEmptyWithSetup {
     @Test
     public void shouldNotRemoveIfNotExists() {
         int idToRemove = 4;
-
         manager.removeById(idToRemove);
 
         PurchaseItem[] actual = manager.getAll();

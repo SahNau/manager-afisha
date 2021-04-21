@@ -1,5 +1,6 @@
 package manager;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import domain.PurchaseItem;
 import manager.CartManager;
@@ -7,18 +8,21 @@ import manager.CartManager;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CartManagerTestNonEmpty {
+    private CartManager manager = new CartManager();
+    private PurchaseItem first = new PurchaseItem(1, 1, "first", 1, 1);
+    private PurchaseItem second = new PurchaseItem(2, 2, "second", 1, 1);
+    private PurchaseItem third = new PurchaseItem(3, 3, "third", 1, 1);
 
-    @Test
-    public void shouldRemoveIfExists() {
-        CartManager manager = new CartManager();
-        int idToRemove = 1;
-        PurchaseItem first = new PurchaseItem(1, 1, "first", 1, 1);
-        PurchaseItem second = new PurchaseItem(2, 2, "second", 1, 1);
-        PurchaseItem third = new PurchaseItem(3, 3, "third", 1, 1);
+    @BeforeEach
+    public void setUp() {
         manager.add(first);
         manager.add(second);
         manager.add(third);
+    }
 
+    @Test
+    public void shouldRemoveIfExists() {
+        int idToRemove = 1;
         manager.removeById(idToRemove);
 
         PurchaseItem[] actual = manager.getAll();
@@ -30,15 +34,7 @@ public class CartManagerTestNonEmpty {
 
     @Test
     public void shouldNotRemoveIfNotExists() {
-        CartManager manager = new CartManager();
         int idToRemove = 4;
-        PurchaseItem first = new PurchaseItem(1, 1, "first", 1, 1);
-        PurchaseItem second = new PurchaseItem(2, 2, "second", 1, 1);
-        PurchaseItem third = new PurchaseItem(3, 3, "third", 1, 1);
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-
         manager.removeById(idToRemove);
 
         PurchaseItem[] actual = manager.getAll();

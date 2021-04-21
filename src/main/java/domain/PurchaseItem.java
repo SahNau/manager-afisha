@@ -14,4 +14,8 @@ public class PurchaseItem {
     private String productName;
     private int productPrice;
     private int count;
+
+    public int getId() {
+        return id;
+    }
 }
