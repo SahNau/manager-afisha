@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class Movies {
-    private String name;
     private int id;
+    private String movieName;
     private String genre;
 }

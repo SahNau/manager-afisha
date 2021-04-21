@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MangerMovies {
     private MoviesManager manager = new MoviesManager();
-    public Movies first = new Movies("Бладшот", 1, "Боевик");
-    public Movies second = new Movies("Вперёд", 2, "Мультфильм");
-    public Movies third = new Movies("Джентльмены", 3, "Боевик");
-    public Movies fourth = new Movies("Человек-Невидимка", 4, "Ужасы");
-    public Movies fifth = new Movies("Тролли", 5, "Мультфильм");
+    public Movies first = new Movies(1, "Бладшот", "Боевик");
+    public Movies second = new Movies(2, "Вперёд", "Мультфильм");
+    public Movies third = new Movies(3, "Джентльмены", "Боевик");
+    public Movies fourth = new Movies(4, "Человек-Невидимка", "Ужасы");
+    public Movies fifth = new Movies(5, "Тролли", "Мультфильм");
 
     @BeforeEach
     public void setUp() {
