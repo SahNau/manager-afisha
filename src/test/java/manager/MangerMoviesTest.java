@@ -1,14 +1,12 @@
 package manager;
 
 import domain.Movies;
-import domain.PurchaseItem;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class MangerMovies {
+public class MangerMoviesTest {
     private MoviesManager manager = new MoviesManager();
     public Movies first = new Movies(1, "Бладшот", "Боевик");
     public Movies second = new Movies(2, "Вперёд", "Мультфильм");
@@ -16,7 +14,6 @@ public class MangerMovies {
     public Movies fourth = new Movies(4, "Человек-Невидимка", "Ужасы");
     public Movies fifth = new Movies(5, "Тролли", "Мультфильм");
 
-    @BeforeEach
     public void setUp() {
         manager.add(first);
         manager.add(second);
@@ -28,40 +25,38 @@ public class MangerMovies {
     @Test
     public void addMoviesEmpty() {
         manager.add(first);
-        Movies[] actual = manager.getAllMovies();
         Movies[] expected = new Movies[]{first};
+        Movies[] actual = manager.getAllMovies();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void addMoviesToExisting() {
         manager.add(first);
-        Movies[] actual = manager.getAllMovies();
         Movies[] expected = new Movies[]{first};
+        Movies[] actual = manager.getAllMovies();
         assertArrayEquals(expected, actual);
 
         manager.add(second);
-        Movies[] actualAdd = manager.getAllMovies();
         Movies[] expectedAdd = new Movies[]{second, first};
+        Movies[] actualAdd = manager.getAllMovies();
         assertArrayEquals(expectedAdd, actualAdd);
     }
 
     @Test
     public void moviesFind() {
         setUp();
-        Movies[] actual = manager.getMovies();
         Movies[] expected = new Movies[]{fifth, fourth, third, second, first};
+        Movies[] actual = manager.getMovies();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void MoviesMinFind() {
-        manager = new MoviesManager(4);
+        manager = new MoviesManager(3);
         setUp();
+        Movies[] expected = new Movies[]{fifth, fourth, third};
         Movies[] actual = manager.getMovies();
-        Movies[] expected = new Movies[]{fifth, fourth};
         assertArrayEquals(expected, actual);
     }
-
-
 }
